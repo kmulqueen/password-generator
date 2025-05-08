@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "JetBrains";
+  font-style: normal;
+  font-weight: 100 900;
+  src: url(./assets/fonts/JetBrainsMono-VariableFont_wght.ttf)
+    format("truetype");
+}
+
+@font-face {
+  font-family: "JetBrains";
+  font-style: italic;
+  font-weight: 100 900;
+  src: url(./assets/fonts/JetBrainsMono-Italic-VariableFont_wght.ttf)
+    format("truetype");
+}
+
+:root {
+  --font-jetBrains: "JetBrains", monospace;
+}
+
+@theme {
+  --color-white: hsl(0, 100%, 100%);
+  --color-black: hsl(0, 0%, 0%);
+  --color-grey-200: hsl(252, 11%, 91%);
+  --color-grey-600: hsl(251, 9%, 53%);
+  --color-grey-700: hsl(248, 5%, 34%);
+  --color-grey-800: hsl(248, 10%, 15%);
+  --color-grey-850: hsl(248, 15%, 11%);
+  --color-grey-900: hsl(248, 17%, 9%); /* Gradient start */
+  --color-grey-950: hsl(255, 22%, 4%); /* Gradient end */
+  --color-green-200: hsl(127, 100%, 82%);
+  --color-yellow-300: hsl(42, 91%, 68%);
+  --color-orange-400: hsl(13, 95%, 66%);
+  --color-red-500: hsl(0, 91%, 63%);
+
+  /** Note to self, default spacing is 0.25rem 
+    ** So p-4 would be 16px
+    https://tailwindcss.com/docs/theme#default-theme-variable-reference
+  */
+}
+
+@layer utilities {
+  .font-jetBrains {
+    font-family: var(--font-jetBrains);
+  }
+
+  .font-jetBrains-italic {
+    font-family: var(--font-jetBrains);
+    font-style: italic;
+  }
+}
+
+@utility text-preset-1 {
+  font-family: var(--font-jetBrains);
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1.3125;
+  letter-spacing: 0px;
+}
+
+@utility text-preset-2 {
+  font-family: var(--font-jetBrains);
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.33;
+  letter-spacing: 0px;
+}
+
+@utility text-preset-3 {
+  font-family: var(--font-jetBrains);
+  font-weight: 700;
+  font-size: 1.125rem;
+  line-height: 1.33;
+  letter-spacing: 0px;
+}
+
+@utility text-preset-4 {
+  font-family: var(--font-jetBrains);
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.25;
+  letter-spacing: 0px;
+}
