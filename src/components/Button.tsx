@@ -2,13 +2,15 @@ import type { PropsWithChildren } from "react";
 
 type Props = {
   onClick?: React.MouseEventHandler;
+  type: "button" | "submit" | "reset";
 };
 
-const Button = ({ children, onClick }: PropsWithChildren<Props>) => {
+const Button = ({ children, onClick, type }: PropsWithChildren<Props>) => {
   return (
     <button
-      className="flex grow py-4 bg-green-200 text-grey-800 text-preset-4"
+      className="flex w-full cursor-pointer items-center justify-center gap-4 bg-green-200 py-4 text-preset-4 text-grey-800 focus-visible:bg-grey-800 focus-visible:text-green-200 focus-visible:outline-2 focus-visible:outline-green-200 focus-visible:**:fill-green-200 active:bg-grey-800 active:text-green-200 active:outline-2 active:outline-green-200 active:**:fill-green-200"
       onClick={onClick}
+      type={type}
     >
       {children}
       <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg">

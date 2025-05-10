@@ -16,11 +16,9 @@
     format("truetype");
 }
 
-:root {
-  --font-jetBrains: "JetBrains", monospace;
-}
-
 @theme {
+  --font-jetBrains: "JetBrains", monospace;
+
   --color-white: hsl(0, 100%, 100%);
   --color-black: hsl(0, 0%, 0%);
   --color-grey-200: hsl(252, 11%, 91%);
@@ -82,4 +80,94 @@
   font-size: 1rem;
   line-height: 1.25;
   letter-spacing: 0px;
+}
+
+@layer components {
+  /* Base styles for the range input */
+  .progress-range {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 0.5rem;
+    background: var(--color-grey-850); /* Right side color (after thumb) */
+    outline: none;
+
+    /* The progress variable (will be set dynamically - src/components/Slider.tsx) */
+    --progress-percentage: 0%;
+  }
+
+  .progress-range:focus {
+    outline: none;
+  }
+
+  .progress-range:focus::-webkit-slider-thumb {
+    background: var(--color-grey-850);
+    border: 2px solid var(--color-green-200);
+  }
+
+  .progress-range:focus::-moz-range-thumb {
+    background: var(--color-grey-850);
+    border: 2px solid var(--color-green-200);
+  }
+
+  /* The track with a gradient for the progress effect */
+  .progress-range::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 0.5rem;
+    cursor: pointer;
+    background: linear-gradient(
+      to right,
+      var(--color-green-200) 0%,
+      var(--color-green-200) var(--progress-percentage),
+      var(--color-grey-400) var(--progress-percentage),
+      var(--color-grey-400) 100%
+    );
+  }
+
+  /* Firefox needs a special pseudo-element for the progress effect */
+  .progress-range::-moz-range-progress {
+    background-color: var(--color-green-200);
+    height: 0.5rem;
+  }
+
+  .progress-range::-moz-range-track {
+    width: 100%;
+    height: 0.5rem;
+    cursor: pointer;
+    background: var(--color-grey-850);
+  }
+
+  .progress-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 1.2rem;
+    height: 1.2rem;
+    background: var(--color-grey-200);
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -0.35rem;
+  }
+
+  .progress-range::-moz-range-thumb {
+    width: 1.2rem;
+    height: 1.2rem;
+    background: var(--color-grey-200);
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+  }
+
+  .progress-range::-webkit-slider-thumb:hover,
+  .progress-range::-webkit-slider-thumb:active,
+  .progress-range::-webkit-slider-thumb:focus {
+    background: var(--color-grey-850);
+    border: 2px solid var(--color-green-200);
+  }
+
+  .progress-range::-moz-range-thumb:hover,
+  .progress-range::-moz-range-thumb:active,
+  .progress-range::-moz-range-thumb:focus {
+    background: var(--color-grey-850);
+    border: 2px solid var(--color-green-200);
+  }
 }
