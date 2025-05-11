@@ -1,4 +1,5 @@
 import { useState } from "react";
+import type { StrengthLevel } from "./components/StrengthState";
 import Button from "./components/Button";
 import Slider from "./components/Slider";
 import TextField from "./components/TextField";
@@ -8,11 +9,16 @@ import StrengthState from "./components/StrengthState";
 
 function App() {
   const [password, setPassword] = useState("");
+  const [strengthLevel, setStrengthLevel] = useState<StrengthLevel>(0);
+
   const handleCopyClick = (): void => {
     console.log("TODO - Copy password to clipboard.");
   };
   const handleGeneratePassword = (generatedPassword: string): void => {
     setPassword(generatedPassword);
+  };
+  const handleSetStrengthLevel = (level: StrengthLevel): void => {
+    setStrengthLevel(level);
   };
 
   return (
@@ -21,10 +27,13 @@ function App() {
         Password Generator
       </h1>
       <TextField onClick={handleCopyClick} password={password} />
-      <Form handleGeneratePassword={handleGeneratePassword}>
+      <Form
+        handleGeneratePassword={handleGeneratePassword}
+        handleSetStrengthLevel={handleSetStrengthLevel}
+      >
         <Slider />
         <CheckboxWrapper />
-        <StrengthState strengthLevel={1} />
+        <StrengthState strengthLevel={strengthLevel} />
         <Button type="submit">GENERATE</Button>
       </Form>
     </main>

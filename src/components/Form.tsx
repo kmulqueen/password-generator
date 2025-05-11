@@ -1,17 +1,23 @@
 import type { FormEvent, PropsWithChildren } from "react";
+import { generatePassword } from "../helpers/generatePassword";
+import type { StrengthLevel } from "./StrengthState";
 
 type FormProps = PropsWithChildren<{
   handleGeneratePassword: (generatedPassword: string) => void;
+  handleSetStrengthLevel: (level: StrengthLevel) => void;
 }>;
 
-export default function Form({ children, handleGeneratePassword }: FormProps) {
+export default function Form({
+  children,
+  handleGeneratePassword,
+  handleSetStrengthLevel,
+}: FormProps) {
   const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    console.log("TODO - Generate password");
     const data = new FormData(e.currentTarget);
-    console.log(data);
-    const generatedPassword = "GeneratedPassword";
-    handleGeneratePassword(generatedPassword);
+    const passwordData = generatePassword(data);
+    handleGeneratePassword(passwordData.password);
+    handleSetStrengthLevel(passwordData.strengthLevel);
   };
   return (
     <form
