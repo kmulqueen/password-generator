@@ -2,6 +2,7 @@ import Button from "./components/Button";
 import Slider from "./components/Slider";
 import TextField from "./components/TextField";
 import Form from "./components/Form";
+import CheckboxWrapper from "./components/CheckboxWrapper";
 
 function App() {
   const handleCopyClick = (): void => {
@@ -16,6 +17,7 @@ function App() {
       <TextField onClick={handleCopyClick} />
       <Form>
         <Slider />
+        <CheckboxWrapper />
         <Button type="submit">GENERATE</Button>
       </Form>
     </main>

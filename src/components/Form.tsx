@@ -4,6 +4,8 @@ export default function Form({ children }: PropsWithChildren) {
   const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     console.log("TODO - Generate password");
+    const data = new FormData(e.currentTarget);
+    console.log(data);
   };
   return <form onSubmit={handleSubmit}>{children}</form>;
 }

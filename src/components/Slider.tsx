@@ -25,12 +25,15 @@ export default function Slider() {
   };
 
   return (
-    <fieldset className="w-full min-w-0">
-      <div className="grid grid-cols-2 grid-rows-2 gap-8 bg-grey-800 p-4">
-        <label htmlFor="character-length" className="text-grey-200">
+    <fieldset className="w-full min-w-0 border-0">
+      <div className="grid grid-cols-[max-content_1fr] grid-rows-2 gap-4 bg-grey-800 p-4">
+        <label
+          htmlFor="character-length"
+          className="self-center text-preset-4 text-grey-200"
+        >
           Character Length
         </label>
-        <p className="place-self-end text-green-200">{value}</p>
+        <p className="place-self-end text-preset-1 text-green-200">{value}</p>
         <input
           ref={inputRef}
           type="range"

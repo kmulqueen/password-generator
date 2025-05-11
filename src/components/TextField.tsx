@@ -4,7 +4,7 @@ type TextFieldProps = {
 
 export default function TextField({ onClick }: TextFieldProps) {
   return (
-    <fieldset className="mb-4 w-full min-w-0">
+    <fieldset className="mb-4 w-full min-w-0 border-0">
       <label htmlFor="generated-password" className="sr-only">
         Generated Password
       </label>
