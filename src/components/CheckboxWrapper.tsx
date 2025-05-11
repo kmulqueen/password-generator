@@ -21,7 +21,7 @@ export default function CheckboxWrapper() {
     },
   ];
   return (
-    <fieldset className="w-full min-w-0 border-0 bg-grey-800 px-4">
+    <fieldset className="w-full min-w-0 border-0 bg-grey-800">
       <legend className="sr-only">Choose password rules:</legend>
       {checkboxOptions.map((option) => (
         <Checkbox id={option.id} label={option.label} key={option.id} />

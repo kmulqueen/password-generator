@@ -26,7 +26,7 @@ export default function Slider() {
 
   return (
     <fieldset className="w-full min-w-0 border-0">
-      <div className="grid grid-cols-[max-content_1fr] grid-rows-2 gap-4 bg-grey-800 p-4">
+      <div className="grid grid-cols-[max-content_1fr] grid-rows-[1fr_max-content] gap-4 bg-grey-800">
         <label
           htmlFor="character-length"
           className="self-center text-preset-4 text-grey-200"
