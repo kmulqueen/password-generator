@@ -1,11 +1,17 @@
 import type { FormEvent, PropsWithChildren } from "react";
 
-export default function Form({ children }: PropsWithChildren) {
+type FormProps = PropsWithChildren<{
+  handleGeneratePassword: (generatedPassword: string) => void;
+}>;
+
+export default function Form({ children, handleGeneratePassword }: FormProps) {
   const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     console.log("TODO - Generate password");
     const data = new FormData(e.currentTarget);
     console.log(data);
+    const generatedPassword = "GeneratedPassword";
+    handleGeneratePassword(generatedPassword);
   };
   return (
     <form

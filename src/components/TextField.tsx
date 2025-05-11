@@ -1,8 +1,9 @@
 type TextFieldProps = {
   onClick: React.MouseEventHandler;
+  password: string;
 };
 
-export default function TextField({ onClick }: TextFieldProps) {
+export default function TextField({ onClick, password }: TextFieldProps) {
   return (
     <fieldset className="mb-4 w-full min-w-0 border-0">
       <label htmlFor="generated-password" className="sr-only">
@@ -16,6 +17,7 @@ export default function TextField({ onClick }: TextFieldProps) {
           className="max-w-8/12 bg-grey-800 text-grey-200 caret-grey-200 placeholder:text-grey-700"
           placeholder="P4$5W0rD!"
           disabled={true}
+          value={password.length ? password : ""}
         />
         <div className="flex gap-2">
           <p className="text-green-200">COPIED</p>
