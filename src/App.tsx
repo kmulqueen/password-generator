@@ -10,9 +10,16 @@ import StrengthState from "./components/StrengthState";
 function App() {
   const [password, setPassword] = useState("");
   const [strengthLevel, setStrengthLevel] = useState<StrengthLevel>(0);
+  const [isCopied, setIsCopied] = useState(false);
 
   const handleCopyClick = (): void => {
-    console.log("TODO - Copy password to clipboard.");
+    if (password.length) {
+      navigator.clipboard.writeText(password);
+      setIsCopied(true);
+    }
+  };
+  const handleCopyReset = (): void => {
+    setIsCopied(false);
   };
   const handleGeneratePassword = (generatedPassword: string): void => {
     setPassword(generatedPassword);
@@ -26,10 +33,15 @@ function App() {
       <h1 className="mb-4 text-center text-preset-4 text-grey-600">
         Password Generator
       </h1>
-      <TextField onClick={handleCopyClick} password={password} />
+      <TextField
+        onClick={handleCopyClick}
+        password={password}
+        isCopied={isCopied}
+      />
       <Form
         handleGeneratePassword={handleGeneratePassword}
         handleSetStrengthLevel={handleSetStrengthLevel}
+        handleCopyReset={handleCopyReset}
       >
         <Slider />
         <CheckboxWrapper />

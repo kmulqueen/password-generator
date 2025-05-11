@@ -5,12 +5,14 @@ import type { StrengthLevel } from "./StrengthState";
 type FormProps = PropsWithChildren<{
   handleGeneratePassword: (generatedPassword: string) => void;
   handleSetStrengthLevel: (level: StrengthLevel) => void;
+  handleCopyReset: () => void;
 }>;
 
 export default function Form({
   children,
   handleGeneratePassword,
   handleSetStrengthLevel,
+  handleCopyReset,
 }: FormProps) {
   const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
@@ -18,6 +20,7 @@ export default function Form({
     const passwordData = generatePassword(data);
     handleGeneratePassword(passwordData.password);
     handleSetStrengthLevel(passwordData.strengthLevel);
+    handleCopyReset();
   };
   return (
     <form

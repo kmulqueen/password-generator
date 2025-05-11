@@ -1,9 +1,14 @@
 type TextFieldProps = {
   onClick: React.MouseEventHandler;
   password: string;
+  isCopied: boolean;
 };
 
-export default function TextField({ onClick, password }: TextFieldProps) {
+export default function TextField({
+  onClick,
+  password,
+  isCopied,
+}: TextFieldProps) {
   return (
     <fieldset className="mb-4 w-full min-w-0 border-0">
       <label htmlFor="generated-password" className="sr-only">
@@ -20,7 +25,7 @@ export default function TextField({ onClick, password }: TextFieldProps) {
           value={password.length ? password : ""}
         />
         <div className="flex gap-2">
-          <p className="text-green-200">COPIED</p>
+          {isCopied && <p className="text-green-200">COPIED</p>}
           <svg
             width="21"
             height="24"
