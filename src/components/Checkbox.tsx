@@ -23,7 +23,9 @@ export default function Checkbox({ id, label }: CheckboxProps) {
             />
           </svg>
         </span>
-        <span className="text-preset-4 text-grey-200">{label}</span>
+        <span className="text-preset-4 text-grey-200 sm:text-preset-3">
+          {label}
+        </span>
       </label>
     </div>
   );

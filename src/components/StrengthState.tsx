@@ -40,7 +40,7 @@ export default function StrengthState({ strengthLevel }: StrengthStateProps) {
   const colorClass = getColorClass(strengthLevel);
   const strengthText = getStrengthText(strengthLevel);
   return (
-    <section className="bg-grey-850 p-4">
+    <section className="bg-grey-850 p-4 sm:px-8 sm:py-6">
       <h2 className="sr-only">Password Strength</h2>
       <div className="flex items-center justify-between">
         <p className="text-preset-3 text-grey-600">STRENGTH</p>

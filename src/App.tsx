@@ -30,7 +30,7 @@ function App() {
 
   return (
     <main className="font-jetBrains sm:w-[33.75rem]">
-      <h1 className="mb-4 text-center text-preset-4 text-grey-600">
+      <h1 className="mb-4 text-center text-preset-4 text-grey-600 sm:mb-8 sm:text-preset-2">
         Password Generator
       </h1>
       <TextField

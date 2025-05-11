@@ -10,16 +10,16 @@ export default function TextField({
   isCopied,
 }: TextFieldProps) {
   return (
-    <fieldset className="mb-4 w-full min-w-0 border-0">
+    <fieldset className="mb-4 w-full min-w-0 border-0 sm:mb-6">
       <label htmlFor="generated-password" className="sr-only">
         Generated Password
       </label>
-      <div className="flex items-center justify-between bg-grey-800 p-4">
+      <div className="flex items-center justify-between bg-grey-800 p-4 sm:px-8">
         <input
           type="text"
           name="generated-password"
           id="generated-password"
-          className="max-w-8/12 bg-grey-800 text-grey-200 caret-grey-200 placeholder:text-grey-700"
+          className="max-w-8/12 bg-grey-800 text-preset-2 text-grey-200 caret-grey-200 placeholder:text-grey-700 sm:text-preset-1"
           placeholder="P4$5W0rD!"
           disabled={true}
           value={password.length ? password : ""}
