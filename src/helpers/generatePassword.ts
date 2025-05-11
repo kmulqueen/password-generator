@@ -1,4 +1,5 @@
 import type { StrengthLevel } from "../components/StrengthState";
+import { calculateStrength, type Payload } from "./calculateStrength";
 
 export type PasswordData = {
   password: string;
@@ -15,11 +16,13 @@ export function generatePassword(options: FormData): PasswordData {
   const passwordLength = Number(options.get("character-length") || "10");
   let passwordPool: string[] = [];
 
+  // Check what options were checked
   const hasUppercase = options.has("uppercase");
   const hasLowercase = options.has("lowercase");
   const hasNumbers = options.has("numbers");
   const hasSymbols = options.has("symbols");
 
+  // If no options were checked return
   if (!hasUppercase && !hasLowercase && !hasNumbers && !hasSymbols) {
     return {
       password: "",
@@ -27,6 +30,7 @@ export function generatePassword(options: FormData): PasswordData {
     };
   }
 
+  // Update passwordPool based on check options
   if (hasUppercase) {
     passwordPool = [...passwordPool, ...upperCaseLetterPool];
   }
@@ -40,22 +44,52 @@ export function generatePassword(options: FormData): PasswordData {
     passwordPool = [...passwordPool, ...symbolsPool];
   }
 
+  // Include at least one character from each selected pool
   const poolLength = passwordPool.length;
-  for (let i: number = 0; i < passwordLength; i++) {
+  if (hasUppercase && passwordLength > 0) {
+    generatedPassword +=
+      upperCaseLetterPool[
+        Math.floor(Math.random() * upperCaseLetterPool.length)
+      ];
+  }
+  if (hasLowercase && passwordLength > generatedPassword.length) {
+    generatedPassword +=
+      lowerCaseLetterPool[
+        Math.floor(Math.random() * lowerCaseLetterPool.length)
+      ];
+  }
+  if (hasNumbers && passwordLength > generatedPassword.length) {
+    generatedPassword +=
+      numbersAsStringPool[
+        Math.floor(Math.random() * numbersAsStringPool.length)
+      ];
+  }
+  if (hasSymbols && passwordLength > generatedPassword.length) {
+    generatedPassword +=
+      symbolsPool[Math.floor(Math.random() * symbolsPool.length)];
+  }
+
+  // Fill the rest of the password with random characters from the pool
+  while (generatedPassword.length < passwordLength) {
     const randIdx = Math.floor(Math.random() * poolLength);
     generatedPassword += passwordPool[randIdx];
   }
 
-  if (generatedPassword.length < 4) {
-    strengthLevel = 1;
-  }
+  // Calculate strength
+  const payload: Payload = {
+    password: generatedPassword,
+    hasLowercase,
+    hasUppercase,
+    hasNumbers,
+    hasSymbols,
+  };
+
+  strengthLevel = calculateStrength(payload);
 
   const passwordData: PasswordData = {
     password: generatedPassword,
     strengthLevel,
   };
-
-  console.log(passwordData);
 
   return passwordData;
 }
