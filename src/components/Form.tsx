@@ -25,7 +25,7 @@ export default function Form({
   return (
     <form
       onSubmit={handleSubmit}
-      className="gap- flex flex-col gap-8 bg-grey-800 p-4"
+      className="flex flex-col gap-8 bg-grey-800 p-4"
     >
       {children}
     </form>
